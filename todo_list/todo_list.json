@@ -1,1 +1,8 @@
-{"tasks": [{"description": "test", "complete": false}, {"description": "test 2", "complete": false}]}
+{
+  "tasks": [
+    {
+      "description": "test 2",
+      "complete": false
+    }
+  ]
+}

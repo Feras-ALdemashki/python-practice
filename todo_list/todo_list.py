@@ -41,8 +41,26 @@ def delete_task(tasks):
         json.dump(tasks, file, indent=2)
 
     print(f"deleted: {removed['description']}")
-def mark_task_complete():
-   return
+def mark_task_complete(tasks):
+    try:
+        task_index = int(input("please select task number to mark complete: ").strip())
+    except ValueError:
+        print("please enter a valid number")
+        return
+
+    task_number = task_index - 1
+    task_list = tasks.get("tasks", [])
+
+    if task_number < 0 or task_number >= len(task_list):
+        print("no task with this number")
+        return
+
+    task_list[task_number]["complete"] = True
+
+    with open(json_file_name, "w") as file:
+        json.dump(tasks, file, indent=2)
+
+    print(f"marked complete: {task_list[task_number]['description']}")
 
 def main():
    tasks= load_task()
@@ -56,7 +74,7 @@ def main():
     elif user_choice =="3":
       delete_task(tasks)
     elif user_choice == "4":
-      mark_task_complete()
+      mark_task_complete(tasks)
     elif user_choice == "5":
       print("Goodbye")
       break

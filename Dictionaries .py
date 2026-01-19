@@ -58,6 +58,8 @@ else:
 # -------------------------
 
 # 6) Set u1002 to active (True).
+    users["u1002"].update(active=True)
+    print(users["u1002"]["active"])
 # 7) Add a new score 95 to Amina’s scores.
 # 8) Add a new field "phone": "+31 6 12345678" to u1001.
 # 9) Remove the "email" field from u1003 (only for that user).

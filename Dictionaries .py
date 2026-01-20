@@ -59,11 +59,26 @@ else:
 
 # 6) Set u1002 to active (True).
     users["u1002"].update(active=True)
-    print(users["u1002"]["active"])
+    
 # 7) Add a new score 95 to Amina’s scores.
+users["u1001"].update(score=95)
+
 # 8) Add a new field "phone": "+31 6 12345678" to u1001.
+users["u1001"]["phone"]="+31 6 12345678" 
+
 # 9) Remove the "email" field from u1003 (only for that user).
+users["u1003"].pop("email")
+
 # 10) Add a brand-new user u1004 with the same structure (use your own values).
+users.update(u1004={
+     "name": "jhon",
+        "age": 22,
+        "email": "jhon@example.com",
+        "active": True,
+        "roles": ["user", "admin"],
+        "address": {"city": "Utrecht", "country": "NL"},
+        "scores": [],
+})
 
 # -------------------------
 # Level 3: Loops + filtering

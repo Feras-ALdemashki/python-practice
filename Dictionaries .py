@@ -7,7 +7,7 @@ users = {
         "name": "Amina",
         "age": 27,
         "email": "amina@example.com",
-        "active": True,
+        "active": False,
         "roles": ["user", "editor"],
         "address": {"city": "Amsterdam", "country": "NL"},
         "scores": [88, 91, 73],
@@ -75,7 +75,7 @@ users.update(u1004={
         "age": 22,
         "email": "jhon@example.com",
         "active": True,
-        "roles": ["user", "admin"],
+        "roles": ["user"],
         "address": {"city": "Utrecht", "country": "NL"},
         "scores": [],
 })
@@ -85,11 +85,32 @@ users.update(u1004={
 # -------------------------
 
 # 11) Print names of only active users.
+for u in users.values():
+    if u["active"]:
+        print(u["name"])
 # 12) Print user IDs of everyone who has the role "admin".
+for user_id ,u in users.items():
+    if  "admin" in  u["roles"]:
+        print(user_id)
 # 13) Print names of users living in Amsterdam.
+for u in users.values():
+    if  "Amsterdam" in  u["address"].values():
+        print(u["name"])
 # 14) Create a list of emails of active users (skip users if "email" is missing).
-# 15) Count how many users are inactive.
+active_users_email = []
 
+for u in users.values():
+    if u.get("active") and "email" in u:
+        active_users_email.append(u["email"])
+
+print(active_users_email)
+# 15) Count how many users are inactive.
+inactive_users_numbers= 0
+for u in users.values():
+    if u["active"]== False:
+        inactive_users_numbers += 1\
+ 
+print(inactive_users_numbers)
 # -------------------------
 # Level 4: Computations
 # -------------------------
@@ -126,11 +147,6 @@ users.update(u1004={
 #     - sets active = True
 #     - does nothing if user_id doesn't exist
 
-# -------------------------
-# Optional: Quick test area
-# -------------------------
 
-# Write your solutions below this line.
-# Tip: Solve them one by one and print results to check.
 
-# Your code starts here:
+

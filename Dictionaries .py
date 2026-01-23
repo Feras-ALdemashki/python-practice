@@ -77,7 +77,7 @@ users.update(u1004={
         "active": True,
         "roles": ["user"],
         "address": {"city": "Utrecht", "country": "NL"},
-        "scores": [],
+        "scores": [50,100],
 })
 
 # -------------------------
@@ -108,7 +108,7 @@ print(active_users_email)
 inactive_users_numbers= 0
 for u in users.values():
     if u["active"]== False:
-        inactive_users_numbers += 1\
+        inactive_users_numbers += 1
  
 print(inactive_users_numbers)
 # -------------------------
@@ -120,7 +120,16 @@ print(inactive_users_numbers)
 #
 #     Output example (format can differ):
 #     averages = {"u1001": 84.0, "u1002": 83.5, "u1003": None}
+averages = {}
 
+for user_id, u in users.items():
+    scores = u["scores"]  
+    if len(scores) == 0:
+        averages[user_id] = None
+    else:
+        averages[user_id] = sum(scores) / len(scores)
+
+print(averages)
 # 17) Find the user_id with the highest average score (ignore None averages).
 # 18) Compute the overall average score across ALL scores from ALL users.
 # 19) Make a dictionary user_score_count mapping user_id -> number of scores.

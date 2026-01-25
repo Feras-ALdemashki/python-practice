@@ -131,6 +131,15 @@ for user_id, u in users.items():
 
 print(averages)
 # 17) Find the user_id with the highest average score (ignore None averages).
+averages = {'u1001': 84.0, 'u1002': 83.5, 'u1003': None, 'u1004': 75.0}
+
+highest_id = max(
+    (k for k, v in averages.items() if v is not None),
+    key=averages.get
+)
+
+print(highest_id)  
+
 # 18) Compute the overall average score across ALL scores from ALL users.
 # 19) Make a dictionary user_score_count mapping user_id -> number of scores.
 # 20) Return a sorted list of user IDs by age (youngest to oldest).
